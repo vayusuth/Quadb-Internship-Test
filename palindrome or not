@@ -1,0 +1,20 @@
+fn is_palindrome(s: &str) -> bool {
+    let s = s.to_lowercase(); // Convert to lowercase to handle case-insensitivity
+    let s = s.chars().filter(|c| c.is_alphanumeric()).collect::<String>(); // Remove non-alphanumeric characters
+    let reversed = s.chars().rev().collect::<String>(); // Reverse the string
+    s == reversed // Check if the original string is equal to its reverse
+}
+
+fn main() {
+    let test_cases = vec!["A man, a plan, a canal, Panama!", "racecar", "hello", "12321"];
+
+    for &test_case in &test_cases {
+        println!("Is '{}' a palindrome? {}", test_case, is_palindrome(test_case));
+    }
+}
+
+Output:
+	Is 'A man, a plan, a canal, Panama!' a palindrome? true
+Is 'racecar' a palindrome? true
+Is 'hello' a palindrome? false
+Is '12321' a palindrome? true
